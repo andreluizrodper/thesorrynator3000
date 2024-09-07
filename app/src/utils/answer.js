@@ -14,7 +14,8 @@ const getAnswer = async (prompt) => {
     },
   })
     .then((res) => res.json())
-    .then((res) => res.data.content[0]);
+    .then((res) => res.data.content[0])
+    .catch(() => store.commit("setLoading", false));
 
   store.commit("setLoading", false);
   store.commit("setAnswer", answer);

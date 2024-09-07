@@ -12,7 +12,7 @@
       </div>
       <div
         v-if="showMessage"
-        class="fixed bottom-4 right-4 rounded bg-green-500 px-3 py-2 text-white"
+        class="fixed bottom-4 right-4 whitespace-pre rounded bg-green-500 px-3 py-2 text-white"
       >
         Text is copied!
       </div>

@@ -77,7 +77,6 @@ export default {
           type: "radio",
           options: [
             "Invite you to something",
-            "Ask you for a favor",
             "Beg you for something",
             "Ask to borrow something",
             "Ask you to go with him/her somewhere",
@@ -126,7 +125,7 @@ export default {
     generate() {
       if (!this.isValid) return;
       this.$store.commit("setAnswer", "");
-      const prompt = `Give me just a short text, from 100 to 250 words, apology to ${this.selectedOptions[0]} the reason I don't want to ${this.selectedOptions[1]} and cover it in some slick reasoning add a flair to it ${this.selectedOptions[2].join(", ")} my relationship with the person ${this.selectedOptions[3]}`;
+      const prompt = `Write a short text; Apology to ${this.selectedOptions[0]}; Reason ${this.selectedOptions[1]} and cover it in some slick reasoning; Mood ${this.selectedOptions[2].join(", ")}; Relationship ${this.selectedOptions[3]}; Max length 100 to 200 words`;
       getAnswer(prompt);
     },
   },
