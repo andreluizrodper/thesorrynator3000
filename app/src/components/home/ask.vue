@@ -76,17 +76,17 @@ export default {
         {
           type: "radio",
           options: [
-            "Invite you to something",
-            "Beg you for something",
-            "Ask to borrow something",
-            "Ask you to go with him/her somewhere",
-            "Ask for an advice",
+            "Invite me to something",
+            "Beg me for something",
+            "Ask me to borrow something",
+            "Ask me to go with him/her somewhere",
+            "Ask me an advice",
           ],
         },
         {
           type: "radio",
           options: [
-            "Not feeling like it",
+            "I'm not feeling like it",
             "Doesn't make any sense",
             "Just pure lazyness",
             "Why that",
@@ -125,7 +125,14 @@ export default {
     generate() {
       if (!this.isValid) return;
       this.$store.commit("setAnswer", "");
-      const prompt = `Write a short text; Apology to ${this.selectedOptions[0]}; Reason ${this.selectedOptions[1]} and cover it in some slick reasoning; Mood ${this.selectedOptions[2].join(", ")}; Relationship ${this.selectedOptions[3]}; Max length 100 to 200 words`;
+      const prompt = `Write a short text; 
+        What they are trying to: ${this.selectedOptions[0]}; 
+        My reason to not comply: ${this.selectedOptions[1]}; 
+        Mood ${this.selectedOptions[2].join(", ")}; 
+        Add slick evasion; 
+        Relationship ${this.selectedOptions[3]}; 
+        Text length 40 to 100 words
+        `;
       getAnswer(prompt);
     },
   },
