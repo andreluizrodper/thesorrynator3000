@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     copyText() {
-      navigator.clipboard.write(this.answer);
+      navigator.clipboard.writeText(this.answer);
       this.showMessage = true;
       setTimeout(() => {
         this.showMessage = false;
