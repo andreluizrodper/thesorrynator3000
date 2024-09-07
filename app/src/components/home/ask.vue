@@ -5,14 +5,14 @@
       :key="index"
       class="flex flex-col gap-1"
     >
-      <p class="text-center text-xl">
+      <p class="text-left text-xl">
         {{ content[`line${index + 1}`] }}
       </p>
       <div class="flex grid grid-cols-1 items-start gap-4 md:grid-cols-3">
         <label
           v-for="(option, optionIndex) in line.options"
           :key="index"
-          class="flex gap-2"
+          class="flex cursor-pointer gap-2 rounded bg-gray-100 px-2 py-1 hover:bg-gray-200"
           :for="`option${index}${optionIndex}`"
         >
           <input
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="mb-4 flex justify-center">
-      <Button :disabled="!isValid" @click="generate">What should I do</Button>
+      <Button :disabled="!isValid" @click="generate">What should I say?</Button>
     </div>
   </div>
 </template>
@@ -77,9 +77,7 @@ export default {
           type: "radio",
           options: [
             "Invite me to something",
-            "Beg me for something",
             "Ask me to borrow something",
-            "Ask me to go with him/her somewhere",
             "Ask me an advice",
           ],
         },
@@ -91,6 +89,7 @@ export default {
             "Just pure lazyness",
             "Why that",
             "This should not be me",
+            "I want to but I can't",
           ],
         },
         {
@@ -102,6 +101,12 @@ export default {
             "Violent",
             "Defensive",
             "Aliens",
+            "Bro",
+            "Sports caster",
+            "Police",
+            "Confused",
+            "Random casuality",
+            "Long words",
           ],
         },
         {
@@ -111,6 +116,7 @@ export default {
             "New Friend",
             "Work buddy",
             "Boss",
+            "Girlfriend",
             "I don't know this person",
           ],
         },
