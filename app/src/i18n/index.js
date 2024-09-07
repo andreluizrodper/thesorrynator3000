@@ -1,0 +1,10 @@
+import DE from "./de.json";
+import FR from "./fr.json";
+import PT from "./pt.json";
+import EN from "./en.json";
+const languages = {};
+languages["DE"] = DE;
+languages["FR"] = FR;
+languages["PT"] = PT;
+languages["EN"] = EN;
+export { languages };
