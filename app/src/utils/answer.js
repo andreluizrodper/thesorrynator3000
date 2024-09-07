@@ -1,5 +1,7 @@
 import store from "@/store";
 
+const api = "https://thesorrynator3000.vercel.app";
+
 const getAnswer = async (prompt) => {
   store.commit("setLoading", true);
   const answer = await fetch(`${api}/ai`, {

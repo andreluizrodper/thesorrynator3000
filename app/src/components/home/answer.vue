@@ -1,19 +1,22 @@
 <template>
-  <Loading v-if="loading" />
-  <div v-if="answer.length > 0" class="flex flex-col gap-1">
-    <p class="text-sm">
-      {{ content.line5 }}
-    </p>
-    <p class="text-center text-xl">
-      {{ answer }}
-    </p>
+  <div class="flex justify-center py-6">
+    <Loading v-if="loading" />
+    <div v-if="answer.length > 0" class="flex flex-col gap-1">
+      <p class="text-sm">
+        {{ content.line5 }}
+      </p>
+      <p class="text-center text-xl">
+        {{ answer }}
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
 import { languages } from "@/i18n";
-import loading from "@/components/ui/loading.vue";
+import Loading from "@/components/ui/loading.vue";
 export default {
+  components: { Loading },
   computed: {
     language() {
       return this.$store.state.language;

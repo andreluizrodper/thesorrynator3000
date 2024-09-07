@@ -19,7 +19,7 @@
             :id="`option${index}${optionIndex}`"
             :type="line.type"
             v-model="selectedOptions[index]"
-            :value="index"
+            :value="optionIndex"
           />
           {{ option }}
         </label>
