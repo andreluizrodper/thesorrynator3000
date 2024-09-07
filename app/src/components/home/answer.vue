@@ -5,9 +5,17 @@
       <p class="text-sm">
         {{ content.line5 }}
       </p>
-      <p class="text-center text-xl">
-        {{ answer }}
-      </p>
+      <div class="rounded bg-gray-100 p-1" @click="copyText">
+        <p class="text-center text-xl">
+          {{ answer }}
+        </p>
+      </div>
+      <div
+        v-if="showMessage"
+        class="fixed bottom-4 right-4 rounded bg-green-500 px-3 py-2 text-white"
+      >
+        Text is copied!
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +37,20 @@ export default {
     },
     answer() {
       return this.$store.state.answer;
+    },
+  },
+  data() {
+    return {
+      showMessage: false,
+    };
+  },
+  methods: {
+    copyText() {
+      navigator.clipboard.write(this.answer);
+      this.showMessage = true;
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 2000);
     },
   },
 };

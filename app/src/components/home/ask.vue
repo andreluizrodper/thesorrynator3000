@@ -19,14 +19,14 @@
             :id="`option${index}${optionIndex}`"
             :type="line.type"
             v-model="selectedOptions[index]"
-            :value="optionIndex"
+            :value="option"
           />
           {{ option }}
         </label>
       </div>
     </div>
     <div class="mb-4 flex justify-center">
-      <Button @click="generate">What should I do</Button>
+      <Button :disabled="!isValid" @click="generate">What should I do</Button>
     </div>
   </div>
 </template>
@@ -60,6 +60,14 @@ export default {
     },
     content() {
       return languages[this.language];
+    },
+    isValid() {
+      return (
+        this.selectedOptions[0].length >= 0 &&
+        this.selectedOptions[1].length >= 0 &&
+        this.selectedOptions[2].length >= 0 &&
+        this.selectedOptions[3].length >= 0
+      );
     },
   },
   data() {
@@ -116,8 +124,9 @@ export default {
       selectedOptions[index] = value;
     },
     generate() {
+      if (!this.isValid) return;
       this.$store.commit("setAnswer", "");
-      const prompt = `Give me just the a short text apology to ${this.selectedOptions[0]} the reason I don't want to ${this.selectedOptions[1]} and cover it in some slick reasoning add a flair to it ${this.selectedOptions[2].join(", ")} my relationship with the person ${this.selectedOptions[3]}`;
+      const prompt = `Give me just a short text, from 100 to 250 words, apology to ${this.selectedOptions[0]} the reason I don't want to ${this.selectedOptions[1]} and cover it in some slick reasoning add a flair to it ${this.selectedOptions[2].join(", ")} my relationship with the person ${this.selectedOptions[3]}`;
       getAnswer(prompt);
     },
   },
